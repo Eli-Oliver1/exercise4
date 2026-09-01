@@ -509,20 +509,29 @@ function main() {
     // Get the canvas, context, and image data
     var canvas = document.getElementById("viewport"); 
     var context = canvas.getContext("2d");
-    var w = context.canvas.width; // as set in html
-    var h = context.canvas.height;  // as set in html
+    var w = context.canvas.width;
+    var h = context.canvas.height;
     var imagedata = context.createImageData(w,h);
-    
+
     // define polygon and view
     var testEye = new Vector(-3.878,1.706,17.672);
-    var testAt = new Vector(-0.319,0.149,0.936);
-    var view = {eye:testEye, at:testAt, up:new Vector(-0.069,-0.989,0.134)};
-    var poly = [{x:-5,y:5,z:10,c:new Color(255,0,0,255)}, {x:5,y:5,z:10,c:new Color(0,255,0,255)}, 
-                {x:5,y:-5,z:10,c:new Color(0,0,0,255)}, {x:-5,y:-5,z:10,c:new Color(0,0,255,255)}];
-    
-    // Define and render a rectangle in 2D with colors and coords at corners
+    var testAt = new Vector(0.319,-0.149,-0.936);
+    var view = {
+        eye:testEye,
+        at:testAt,
+        up:new Vector(0.069,0.989,-0.134)
+    };
+
+    var poly = [
+        {x:-5,y:5,z:10,c:new Color(255,0,0,255)},
+        {x:5,y:5,z:10,c:new Color(0,255,0,255)},
+        {x:5,y:-5,z:10,c:new Color(0,0,0,255)},
+        {x:-5,y:-5,z:10,c:new Color(0,0,255,255)}
+    ];
+
+    // project and fill
     projectPoly(imagedata,poly,view);
     fillPoly(imagedata,poly);
-    
-    context.putImageData(imagedata, 0, 0); // display the image in the context
+
+    context.putImageData(imagedata, 0, 0);
 }
