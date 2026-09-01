@@ -514,12 +514,12 @@ function main() {
     var imagedata = context.createImageData(w,h);
 
     // define polygon and view
-    var testEye = new Vector(-3.878,1.706,17.672);
-    var testAt = new Vector(0.319,-0.149,-0.936);
+    var testEye = new Vector(3.878,1.706,17.672);
+    var testAt = new Vector(-0.319,-0.149,-0.936);
     var view = {
         eye:testEye,
         at:testAt,
-        up:new Vector(0.069,0.989,-0.134)
+        up:new Vector(-0.069,0.989,-0.134)
     };
 
     var poly = [
